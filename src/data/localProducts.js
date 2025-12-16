@@ -1,0 +1,31 @@
+const assetImages = [
+  { file: "apple.jpg", name: "Fresh Apple", category: "GROCERY", price: 120 },
+  { file: "bottle.jpg", name: "Water Bottle", category: "HOME", price: 299 },
+  { file: "bucket.png", name: "Plastic Bucket", category: "HOME", price: 249 },
+  { file: "car.avif", name: "Sports Car Model", category: "AUTOMOBILE", price: 750000 },
+  { file: "cloth1.jpg", name: "Casual Shirt", category: "CLOTHING", price: 1299 },
+  { file: "cloth2.jpg", name: "Summer Wear", category: "CLOTHING", price: 999 },
+  { file: "cloth4.jpg", name: "Stylish Jacket", category: "CLOTHING", price: 2499 },
+  { file: "exhuast.jpg", name: "Bike Exhaust", category: "AUTOMOBILE", price: 3999 },
+  { file: "glass.jpg", name: "Glass Set", category: "KITCHEN", price: 499 },
+  { file: "kiwi.jpg", name: "Fresh Kiwi", category: "GROCERY", price: 180 },
+  { file: "laptop.jpg", name: "Laptop", category: "ELECTRONICS", price: 54999 },
+  { file: "mug.jpg", name: "Coffee Mug", category: "KITCHEN", price: 349 },
+  { file: "orange.jpg", name: "Orange Fruit", category: "GROCERY", price: 99 },
+  { file: "phone.jpg", name: "Smartphone", category: "ELECTRONICS", price: 28999 },
+  { file: "pomegranate.jpg", name: "Pomegranate", category: "GROCERY", price: 199 },
+  { file: "solar.jpg", name: "Solar Panel", category: "ELECTRONICS", price: 12999 },
+  { file: "spoon.webp", name: "Steel Spoon", category: "KITCHEN", price: 149 },
+  { file: "trolly.jpg", name: "Shopping Trolley", category: "HOME", price: 3499 },
+  { file: "vegetable.jpg", name: "Fresh Vegetables", category: "GROCERY", price: 159 },
+];
+
+export const localProducts = assetImages.map((item, index) => ({
+  id: `asset-${index + 1}`,
+  name: item.name,
+  description: `High quality ${item.name.toLowerCase()} for daily use.`,
+  price: item.price,
+  rating: (Math.random() * 1.5 + 3.5).toFixed(1),
+  category: item.category,
+  image: `/images/${item.file}`, 
+}));
