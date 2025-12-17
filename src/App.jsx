@@ -1,5 +1,3 @@
-// src/App.jsx
-
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -12,7 +10,6 @@ import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Orders from "./pages/Orders";
-
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
@@ -22,12 +19,10 @@ import Wishlist from "./pages/Wishlist";
 export default function App() {
   const user = useSelector((state) => state.auth.user);
 
-  // 🔹 DARK MODE STATE (persisted)
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem("theme") === "dark";
   });
 
-  // 🔹 Apply theme globally
   useEffect(() => {
   document.body.classList.toggle("dark", darkMode);
 }, [darkMode]);
@@ -35,7 +30,6 @@ export default function App() {
 
   return (
     <>
-      {/* ✅ Navbar only when logged in */}
       {user && (
         <Navbar
           darkMode={darkMode}
@@ -44,9 +38,7 @@ export default function App() {
       )}
 
       <Routes>
-        {/* =====================
-            PUBLIC ROUTES
-        ===================== */}
+
         <Route
           path="/login"
           element={
@@ -65,9 +57,6 @@ export default function App() {
           }
         />
 
-        {/* =====================
-            PROTECTED ROUTES
-        ===================== */}
         <Route
           path="/products"
           element={
@@ -113,17 +102,14 @@ export default function App() {
           }
         />
         <Route
-  path="/wishlist"
-  element={
-    <ProtectedRoute>
-      <Wishlist />
-    </ProtectedRoute>
-  }
-/>
+          path="/wishlist"
+          element={
+            <ProtectedRoute>
+              <Wishlist />
+            </ProtectedRoute>
+          }
+        />
 
-        {/* =====================
-            FALLBACK ROUTE
-        ===================== */}
         <Route
           path="*"
           element={

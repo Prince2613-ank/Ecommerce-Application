@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// ✅ Load wishlist from localStorage
 const initialState = {
   items: JSON.parse(localStorage.getItem("wishlist")) || []
 };
@@ -22,7 +21,6 @@ const wishlistSlice = createSlice({
         state.items.push(action.payload);
       }
 
-      // ✅ ALWAYS persist to localStorage
       localStorage.setItem("wishlist", JSON.stringify(state.items));
     }
   }

@@ -5,15 +5,14 @@ export async function fetchProducts() {
   const apiData = await res.json();
 
   const apiProducts = apiData.map((p) => ({
-    id: `api-${p.id}`, // 🔑 avoid collision
+    id: `api-${p.id}`,
     name: p.title,
     description: p.description,
-    price: Math.round(p.price * 80), // INR
+    price: Math.round(p.price * 80),
     rating: p.rating.rate,
     category: p.category.toUpperCase(),
-    image: p.image, // API image
+    image: p.image, 
   }));
 
-  // ✅ Assets FIRST, API AFTER
   return [...localProducts, ...apiProducts];
 }

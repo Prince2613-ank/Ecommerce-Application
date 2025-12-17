@@ -13,70 +13,39 @@ export default function Navbar({ darkMode, setDarkMode }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   if (!user) return null;
-
   const handleLogout = () => {
-    dispatch(logout());
-    navigate("/login");
-    setMenuOpen(false);
+  dispatch(logout());
+  navigate("/login");
+  setMenuOpen(false);
   };
 
   return (
     <nav className="navbar">
-      {/* LOGO */}
-      <Link to="/products" className="nav-logo">
-        Welcome To Store
-      </Link>
-
-      {/* DESKTOP LINKS */}
+      <Link to="/products" className="nav-logo">Welcome To Store</Link>
       <div className="nav-links desktop-only">
         <Link to="/products">🛍 Products</Link>
         <Link to="/wishlist">❤️ Wishlist ({wishlistCount})</Link>
         <Link to="/cart">🛒 Cart ({cartCount})</Link>
         <Link to="/orders">📦 Orders</Link>
 
-        <button
-          className="theme-toggle-btn"
-          onClick={() => setDarkMode(!darkMode)}
-        >
+        <button className="theme-toggle-btn" onClick={() => setDarkMode(!darkMode)}>
           {darkMode ? "☀️ Light" : "🌙 Dark"}
         </button>
 
         <button onClick={handleLogout}>🚪 Logout</button>
       </div>
+      <button className="hamburger-btn mobile-only" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
 
-      {/* MOBILE HAMBURGER */}
-      <button
-        className="hamburger-btn mobile-only"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        ☰
-      </button>
-
-      {/* MOBILE MENU CARD */}
       {menuOpen && (
         <>
-          <div
-            className="menu-backdrop"
-            onClick={() => setMenuOpen(false)}
-          />
-
+          <div className="menu-backdrop" onClick={() => setMenuOpen(false)} />
           <div className="menu-card">
-            <Link to="/products" onClick={() => setMenuOpen(false)}>
-              🛍 Products
-            </Link>
-            <Link to="/wishlist" onClick={() => setMenuOpen(false)}>
-              ❤️ Wishlist ({wishlistCount})
-            </Link>
-            <Link to="/cart" onClick={() => setMenuOpen(false)}>
-              🛒 Cart ({cartCount})
-            </Link>
-            <Link to="/orders" onClick={() => setMenuOpen(false)}>
-              📦 Orders
-            </Link>
+            <Link to="/products" onClick={() => setMenuOpen(false)}>🛍 Products</Link>
+            <Link to="/wishlist" onClick={() => setMenuOpen(false)}>❤️ Wishlist ({wishlistCount})</Link>
+            <Link to="/cart" onClick={() => setMenuOpen(false)}>🛒 Cart ({cartCount})</Link>
+            <Link to="/orders" onClick={() => setMenuOpen(false)}>📦 Orders</Link>
 
-            <button onClick={() => setDarkMode(!darkMode)}>
-              {darkMode ? "☀️ Light" : "🌙 Dark"}
-            </button>
+            <button onClick={() => setDarkMode(!darkMode)}>{darkMode ? "☀️ Light" : "🌙 Dark"}</button>
 
             <button onClick={handleLogout}>🚪 Logout</button>
           </div>

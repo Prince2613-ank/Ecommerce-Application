@@ -33,13 +33,11 @@ export default function Signup() {
     <div className="auth-container">
       <form className="auth-card" onSubmit={handleSubmit}>
         
-        {/* 🔒 FIXED HEADER BLOCK */}
         <div className="auth-header">
           <h2>Create Account</h2>
           <p className="auth-subtitle">Sign up to start shopping</p>
         </div>
 
-        {/* INPUTS – NOW STABLE */}
         <input
           type="email"
           placeholder="Email"

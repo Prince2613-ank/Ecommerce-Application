@@ -3,7 +3,6 @@ import { useState } from "react";
 export default function Orders() {
   const [expandedOrderId, setExpandedOrderId] = useState(null);
 
-  // ✅ newest order first (UI only)
   const orders = [...(JSON.parse(localStorage.getItem("orders")) || [])]
     .sort((a, b) => b.orderNumber - a.orderNumber);
 
@@ -27,12 +26,10 @@ export default function Orders() {
       {orders.map(order => (
         <div key={order.id} className="order-card">
 
-          {/* 🔹 ORDER BADGE */}
           <div className="order-badge">
             Order #{order.orderNumber}
           </div>
 
-          {/* 🔹 HEADER */}
           <div className="order-card-header">
            <h4>{order.cardName || "Customer"}</h4> 
             <h4>
@@ -42,12 +39,10 @@ export default function Orders() {
           </h4>  
           </div>
 
-          {/* 🔹 BASIC INFO */}
           <p><strong>Date:</strong> {order.date}</p>
           <p><strong>Total:</strong> ₹{order.total}</p>
           <p><strong>Items:</strong> {order.items.length}</p>
 
-          {/* 🔹 TOGGLE */}
           <button
             className="view-details-btn"
             onClick={() => toggleDetails(order.id)}
@@ -55,7 +50,6 @@ export default function Orders() {
             {expandedOrderId === order.id ? "Hide Details" : "View Details"}
           </button>
 
-          {/* 🔹 DETAILS */}
           {expandedOrderId === order.id && (
             <div className="order-details">
 

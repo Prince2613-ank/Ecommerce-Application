@@ -9,6 +9,7 @@ const authSlice = createSlice({
     users: usersFromStorage,
     user: loggedUserFromStorage,
     },
+    
 reducers: {
     signup: (state, action) => {
         const exists = state.users.find(

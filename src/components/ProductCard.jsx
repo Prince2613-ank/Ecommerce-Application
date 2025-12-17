@@ -8,7 +8,6 @@ function ProductCard({ product }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // ✅ Optimized selectors (boolean only, no arrays)
   const inCart = useSelector((state) =>
     state.cart.items.some((i) => i.id === product.id)
   );
@@ -26,40 +25,33 @@ function ProductCard({ product }) {
 
   return (
     <div className="card clickable-card" onClick={goToDetails}>
-      {/* ❤️ WISHLIST ICON (TOP RIGHT) */}
       <button
         className="wishlist-icon"
         onClick={(e) => {
-          e.stopPropagation(); // ⛔ stop navigation
+          e.stopPropagation();
           dispatch(toggleWishlist(product));
         }}
-        title="Add to Wishlist"
-      >
+        title="Add to Wishlist">
         {isWishlisted ? "❤️" : "🤍"}
       </button>
 
-      {/* IMAGE */}
       <div className="image-wrapper">
         <img
           src={product.image}
           alt={product.name}
-          loading="lazy"   // ✅ performance boost
+          loading="lazy"  
         />
         <div className="rating-overlay">⭐ {product.rating}</div>
       </div>
 
-      {/* CATEGORY */}
       <span className="product-category">{product.category}</span>
 
-      {/* NAME */}
       <h4>{product.name}</h4>
 
-      {/* DESCRIPTION */}
       <p className={`product-desc ${expanded ? "expanded" : ""}`}>
         {product.description}
       </p>
 
-      {/* READ MORE */}
       {isLongText && (
         <span
           className="read-more"
@@ -72,10 +64,8 @@ function ProductCard({ product }) {
         </span>
       )}
 
-      {/* PRICE */}
       <p className="product-price">₹{product.price}</p>
 
-      {/* ACTIONS */}
       <div className="card-actions">
         <button
           disabled={inCart}
@@ -91,5 +81,4 @@ function ProductCard({ product }) {
   );
 }
 
-/* ✅ STEP 3: MEMOIZATION */
 export default React.memo(ProductCard);

@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const cartFromStorage = JSON.parse(localStorage.getItem("cartItems")) || [];
-
 const saveToStorage = (items) => {
   localStorage.setItem("cartItems", JSON.stringify(items));
 };
@@ -14,13 +13,11 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const item = state.items.find(i => i.id === action.payload.id);
-
       if (item) {
         item.qty += 1;
       } else {
         state.items.push({ ...action.payload, qty: 1 });
       }
-
       saveToStorage(state.items);
     },
 
@@ -42,16 +39,12 @@ const cartSlice = createSlice({
       saveToStorage([]);
     },
 
-    // ✅ NEW: remove non-existing products after refresh
     syncCartWithProducts: (state, action) => {
       const liveProducts = action.payload;
-
       const liveIds = new Set(liveProducts.map(p => String(p.id)));
-
       state.items = state.items.filter(item =>
         liveIds.has(String(item.id))
       );
-
       saveToStorage(state.items);
     },
   },

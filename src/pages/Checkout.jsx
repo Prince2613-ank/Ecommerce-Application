@@ -12,12 +12,10 @@ export default function Checkout() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [error, setError] = useState("");
 
-  // Address state
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [pincode, setPincode] = useState("");
 
-  // Payment state
   const [cardName, setCardName] = useState("");
   const [cardNumber, setCardNumber] = useState("");
 
@@ -26,7 +24,6 @@ export default function Checkout() {
     0
   );
 
-  // 🔹 Step 1 validation
   const handleNextFromAddress = () => {
     if (!address || !city || !pincode) {
       setError("Please fill all address fields");
@@ -36,7 +33,6 @@ export default function Checkout() {
     setStep(2);
   };
 
-  // 🔹 Step 2 validation
   const handleNextFromPayment = () => {
     if (!cardName || cardNumber.length < 8) {
       setError("Please enter valid card details");
@@ -45,8 +41,7 @@ export default function Checkout() {
     setError("");
     setStep(3);
   };
-  // 🔹 Save order to localStorage (Order History)
-const saveOrderToHistory = () => {
+  const saveOrderToHistory = () => {
   const previousOrders =
     JSON.parse(localStorage.getItem("orders")) || [];
   const nextOrderNumber = previousOrders.length + 1;
@@ -77,13 +72,10 @@ const saveOrderToHistory = () => {
 };
 
 
-  // 🔹 Final confirmation
 const handleConfirmOrder = () => {
-  saveOrderToHistory();     // 👈 ADD THIS FIRST
-  dispatch(clearCart());   // existing
-  setShowSuccess(true);    // existing
-
-  // Auto redirect after success
+  saveOrderToHistory();
+  dispatch(clearCart());
+  setShowSuccess(true);
   setTimeout(() => {
     navigate("/products");
   }, 1500);
@@ -94,7 +86,6 @@ const handleConfirmOrder = () => {
     <div className="container checkout-page">
       <h2>Checkout</h2>
 
-      {/* STEP INDICATOR */}
       <div className="checkout-steps">
         <div className={step >= 1 ? "active" : ""}><strong>Address</strong></div>
         <div className={step >= 2 ? "active" : ""}><strong>Payment</strong></div>
@@ -104,7 +95,6 @@ const handleConfirmOrder = () => {
       <div className="checkout-card">
         {error && <p className="error-text">{error}</p>}
 
-        {/* STEP 1 */}
         {step === 1 && (
           <>
             <h3>Shipping Address</h3>
@@ -131,7 +121,6 @@ const handleConfirmOrder = () => {
           </>
         )}
 
-        {/* STEP 2 */}
         {step === 2 && (
           <>
             <h3>Card Details</h3>
@@ -156,7 +145,6 @@ const handleConfirmOrder = () => {
           </>
         )}
 
-        {/* STEP 3 */}
         {step === 3 && (
           <>
             <h3>Order Summary</h3>
@@ -194,7 +182,6 @@ const handleConfirmOrder = () => {
         )}
       </div>
 
-      {/* SUCCESS MODAL */}
       {showSuccess && (
         <div className="modal-overlay">
           <div className="modal">

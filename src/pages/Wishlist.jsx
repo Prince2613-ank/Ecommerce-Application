@@ -12,7 +12,6 @@ export default function Wishlist() {
     return (
       <div className="container">
         <h2>❤️ My Wishlist</h2>
-
         <div className="empty-cart">
           <div className="empty-cart-icon">🤍</div>
           <p><strong>Your wishlist is empty</strong></p>
@@ -35,7 +34,6 @@ export default function Wishlist() {
       <div className="products-grid">
         {wishlistItems.map((product) => (
           <div key={product.id} className="card">
-            {/* IMAGE */}
             <div
               className="image-wrapper"
               onClick={() => navigate(`/products/${product.id}`)}
@@ -47,16 +45,12 @@ export default function Wishlist() {
               />
             </div>
 
-            {/* CATEGORY */}
             <span className="product-category">{product.category}</span>
 
-            {/* NAME */}
             <h4>{product.name}</h4>
 
-            {/* PRICE */}
             <p className="product-price">₹{product.price}</p>
 
-            {/* ACTIONS */}
             <div className="card-actions">
               <button
                 onClick={() => navigate(`/products/${product.id}`)}

@@ -4,13 +4,9 @@ import { fetchProducts } from "../data/products";
 
 export default function Products() {
   const [loading, setLoading] = useState(true);
-
-  // 🔍 Filters
   const [search, setSearch] = useState("");
   const [maxPrice, setMaxPrice] = useState(100000);
   const [minRating, setMinRating] = useState(0);
-
-  // 🛍 Products
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -19,13 +15,12 @@ export default function Products() {
 
     fetchProducts()
       .then((data) => {
-        setProducts(data); // ✅ normalized FakeStore products
+        setProducts(data);
         setLoading(false);
       })
       .catch(() => setLoading(false));
   }, []);
 
-  // ✅ STRICT FILTER LOGIC
   const filteredProducts = products.filter((p) => {
     return (
       p.name.toLowerCase().includes(search.toLowerCase()) &&
@@ -70,7 +65,6 @@ export default function Products() {
         </select>
       </div>
 
-      {/* ================= LOADING ================= */}
       {loading ? (
         <div className="products-grid">
           {Array.from({ length: 8 }).map((_, i) => (
@@ -79,14 +73,12 @@ export default function Products() {
         </div>
       ) : (
         <>
-          {/* ================= PRODUCTS ================= */}
           <div className="products-grid">
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
 
-          {/* ================= EMPTY STATE ================= */}
           {filteredProducts.length === 0 && (
             <p className="no-results">
               😕 No products match your current filters.
