@@ -26,14 +26,15 @@ button:hover {
    NAVBAR
 ========================= */
 .navbar {
-  background: #fff;
-  padding: 10px 16px;
-  border-bottom: 1px solid #ddd;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  left: 0;
+  right: 0;
+  padding: 14px 16px;
+  overflow: visible;
 }
+
 
 .nav-logo {
   font-size: 18px;
@@ -1307,19 +1308,19 @@ body.dark .filters span {
 
 /* HAMBURGER */
 .hamburger {
- display: none;
-  align-items: center;      /* ✅ center icon inside button */
-  justify-content: center;
-  height: 100%;             /* ✅ take full navbar height */
-  margin-left: auto;
-  font-size: 24px;
-  background: none;
-  border: none;
+  position: absolute;
+  top: 50%;
+  right: 12px;
+
+  transform: translateY(-50%);
+  font-size: 26px;
   color: #ffd100;
   cursor: pointer;
-  position: relative;
-  top: -44px;
+  z-index: 1000;
+
+  display: none;
 }
+
 
 /* MOBILE NAV */
 @media (max-width: 900px) {
@@ -1347,42 +1348,47 @@ body.dark .filters span {
 /* ===== RESPONSIVE VISIBILITY ===== */
 .desktop-only {
   display: flex;
+  gap: 14px;
 }
 
 .mobile-only {
   display: none;
 }
 
-/* MOBILE VIEW */
 @media (max-width: 768px) {
   .desktop-only {
     display: none;
   }
-
   .mobile-only {
     display: block;
   }
 }
 
+
 /* Hamburger */
 .hamburger-btn {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+
+  font-size: 26px;
   background: none;
   border: none;
-  font-size: 26px;
   color: #ffd100;
   cursor: pointer;
-  top: -44px;
-  left: 410px;
-  position: relative;
+  z-index: 1001;
 }
+
 
 /* Overlay */
 .menu-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-  z-index: 998;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 999;
 }
+
 
 /* Small floating menu card */
 .menu-card {
@@ -1432,3 +1438,11 @@ body.dark .filters span {
     transform: translateY(0) scale(1);
   }
 }
+.navbar {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
