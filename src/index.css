@@ -29,10 +29,12 @@ button:hover {
   position: relative;
   width: 100%;
   max-width: 100%;
-  left: 0;
-  right: 0;
-  padding: 14px 16px;
-  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(90deg, #0a2a66, #123c8c);
+   padding: 14px 16px;
 }
 
 
@@ -50,17 +52,17 @@ button:hover {
    flex-wrap: wrap;  
 }
 
-.nav-links a {
-  text-decoration: none;
-  color: #333;
-}
 
 /* =========================
    PRODUCTS LIST
 ========================= */
 .filters {
-  display: flex;
-  gap: 40px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+   display: flex;
+  gap: 38px;
   flex-wrap: wrap;
   align-items: center;
   margin-bottom: 20px;
@@ -719,27 +721,11 @@ button:hover {
 }
 
 
-/* Global background polish */
-body {
-  background: linear-gradient(180deg, #f3f6fa 0%, #e9eef4 100%);
-}
-
-.navbar {
-  background: linear-gradient(90deg, #0a2a66, #123c8c);
-  border-bottom: none;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-  align-items: center;  
-  position: relative;
-}
-
 .nav-logo {
   color: #ffd100;
   font-weight: 700;
 }
 
-.nav-links a {
-  color: #ffffff;
-}
 
 .nav-links button {
  background: transparent;
@@ -753,45 +739,11 @@ body {
 }
 
 
-
-/* Filters section – card look */
-.filters {
-  background: #ffffff;
-  padding: 16px 18px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-  margin-bottom: 28px;
-}
-
-/* More space between products */
-.products-grid {
-  gap: 28px;
-}
-
-/* Product card – premium govt style */
-.card {
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  border-top: 4px solid #ffd100;
-}
-
 .card:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
 }
 
-/* Image polish */
-.image-wrapper {
-  border-radius: 10px;
-  background: #f4f6f9;
-}
-
-/* Rating badge – LIC colors */
-.rating-overlay {
-  background: #0a2a66;
-  color: #ffd100;
-  font-weight: 700;
-}
 
 /* Price highlight */
 .card strong {
@@ -831,12 +783,6 @@ body {
   border-radius: 14px;
 }
 
-/* Mobile spacing improvement */
-@media (max-width: 600px) {
-  .products-grid {
-    gap: 20px;
-  }
-}
 
 
 .view-details-btn {
@@ -1221,15 +1167,7 @@ select option {
   background: var(--card-bg);
   color: var(--text);
 }
-.theme-toggle-btn {
-  background: var(--primary);
-  color: #000;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-}
+
 
 body.dark .theme-toggle-btn {
   background: #facc15;
@@ -1248,12 +1186,6 @@ body.dark .theme-toggle-btn {
   color: var(--muted-text);
 }
 /* ===== FILTER BAR FIX ===== */
-.filters {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 12px;
-}
 
 /* DARK MODE SAFETY */
 body.dark .filters {
@@ -1285,6 +1217,8 @@ body.dark .filters span {
 .nav-links a {
   margin-right: 12px;
   font-weight: 500;
+  color: #ffffff;
+   text-decoration: none;
 }
 @media (max-width: 768px) {
   .navbar {
@@ -1311,13 +1245,11 @@ body.dark .filters span {
   position: absolute;
   top: 50%;
   right: 12px;
-
   transform: translateY(-50%);
   font-size: 26px;
   color: #ffd100;
   cursor: pointer;
   z-index: 1000;
-
   display: none;
 }
 
@@ -1441,11 +1373,5 @@ body.dark .filters span {
     transform: translateY(0) scale(1);
   }
 }
-.navbar {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+
 
