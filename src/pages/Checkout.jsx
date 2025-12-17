@@ -78,7 +78,7 @@ const handleConfirmOrder = () => {
   setShowSuccess(true);
   setTimeout(() => {
     navigate("/products");
-  }, 1500);
+  }, 1800);
 };
 
 
@@ -185,8 +185,9 @@ const handleConfirmOrder = () => {
       {showSuccess && (
         <div className="modal-overlay">
           <div className="modal">
-            <p>🎉 Order Placed Successfully!</p>
-            <p>Your order has been confirmed.</p>
+            <h3>🎊 Order Confirmed</h3>
+            <p>Your purchase was successful.</p>
+            <p>Check the Orders page for delivery details.</p>
           </div>
         </div>
       )}
