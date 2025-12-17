@@ -1379,6 +1379,9 @@ body.dark .filters span {
   cursor: pointer;
   z-index: 1001;
 }
+.hamburger-btn:hover {
+  transform: translateY(-50%); /* 🔒 prevent movement */
+}
 
 
 /* Overlay */
