@@ -474,8 +474,8 @@ button:hover {
 
   background-image:
     linear-gradient(
-      rgba(0, 0, 0, 0.72),
-      rgba(0, 0, 0, 0.72)
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25)
     ),
     url("/images/bg_image.jpg");
 
@@ -487,15 +487,15 @@ button:hover {
 .auth-card input {
   width: 100%;
   padding: 18px 12px;   /* 👈 reduced height */
-  font-size: 14.5px;    /* 👈 sharper text */
+  font-size: 15.5px;    /* 👈 sharper text */
   font-weight: 600;
   border-radius: 10px; 
   border: none;
 
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.25);
   color: #fff;
 
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
 }
 .auth-card {
   max-width: 420px;
@@ -1373,4 +1373,6 @@ body.dark .filters span {
   }
 }
 
-
+.card {
+  border-top: 4px solid #ffd100 !important;
+}
