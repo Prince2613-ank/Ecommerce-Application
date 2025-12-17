@@ -185,7 +185,7 @@ const handleConfirmOrder = () => {
       {showSuccess && (
         <div className="modal-overlay">
           <div className="modal">
-            <h3>🎊 Order Confirmed</h3>
+            <p>🎊 Order Confirmed</p>
             <p>Your purchase was successful.</p>
             <p>Check the Orders page for delivery details.</p>
           </div>
