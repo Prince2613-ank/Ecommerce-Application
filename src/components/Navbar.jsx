@@ -21,7 +21,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
 
   return (
     <nav className="navbar">
-      <Link to="/products" className="nav-logo">Welcome To Store</Link>
+      <Link to="/products" className="nav-logo">Welcome To ReactStore</Link>
       <div className="nav-links desktop-only">
         <Link to="/products">🛍 Products</Link>
         <Link to="/wishlist">❤️ Wishlist ({wishlistCount})</Link>
