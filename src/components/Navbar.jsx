@@ -10,8 +10,9 @@ export default function Navbar({ darkMode, setDarkMode }) {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const [menuOpen, setMenuOpen] = useState(false); // ✅ REQUIRED
+  if (!user) return null;
 
   const handleLogout = () => {
     dispatch(logout());
@@ -19,41 +20,19 @@ export default function Navbar({ darkMode, setDarkMode }) {
     setMenuOpen(false);
   };
 
-  if (!user) return null;
-
   return (
     <nav className="navbar">
-  {/* LEFT */}
-  <Link to="/products" className="nav-logo">
-    Welcome To Store
-  </Link>
+      {/* LOGO */}
+      <Link to="/products" className="nav-logo">
+        Welcome To Store
+      </Link>
 
-  {/* RIGHT ICON (HAMBURGER) */}
-  <button
-    className="hamburger"
-    onClick={() => setMenuOpen(!menuOpen)}
-    aria-label="Toggle menu"
-  >
-    ☰
-  </button>
-   <div className={`nav-links ${menuOpen ? "open" : ""}`}></div>
-      {/* RIGHT LINKS */}
-      <div className={`nav-links ${menuOpen ? "open" : ""}`}>
-        <Link to="/products" onClick={() => setMenuOpen(false)}>
-          🛍 Products
-        </Link>
-
-        <Link to="/wishlist" onClick={() => setMenuOpen(false)}>
-          ❤️ Wishlist ({wishlistCount})
-        </Link>
-
-        <Link to="/cart" onClick={() => setMenuOpen(false)}>
-          🛒 Cart ({cartCount})
-        </Link>
-
-        <Link to="/orders" onClick={() => setMenuOpen(false)}>
-          📦 Orders
-        </Link>
+      {/* DESKTOP LINKS */}
+      <div className="nav-links desktop-only">
+        <Link to="/products">🛍 Products</Link>
+        <Link to="/wishlist">❤️ Wishlist ({wishlistCount})</Link>
+        <Link to="/cart">🛒 Cart ({cartCount})</Link>
+        <Link to="/orders">📦 Orders</Link>
 
         <button
           className="theme-toggle-btn"
@@ -64,6 +43,45 @@ export default function Navbar({ darkMode, setDarkMode }) {
 
         <button onClick={handleLogout}>🚪 Logout</button>
       </div>
+
+      {/* MOBILE HAMBURGER */}
+      <button
+        className="hamburger-btn mobile-only"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        ☰
+      </button>
+
+      {/* MOBILE MENU CARD */}
+      {menuOpen && (
+        <>
+          <div
+            className="menu-backdrop"
+            onClick={() => setMenuOpen(false)}
+          />
+
+          <div className="menu-card">
+            <Link to="/products" onClick={() => setMenuOpen(false)}>
+              🛍 Products
+            </Link>
+            <Link to="/wishlist" onClick={() => setMenuOpen(false)}>
+              ❤️ Wishlist ({wishlistCount})
+            </Link>
+            <Link to="/cart" onClick={() => setMenuOpen(false)}>
+              🛒 Cart ({cartCount})
+            </Link>
+            <Link to="/orders" onClick={() => setMenuOpen(false)}>
+              📦 Orders
+            </Link>
+
+            <button onClick={() => setDarkMode(!darkMode)}>
+              {darkMode ? "☀️ Light" : "🌙 Dark"}
+            </button>
+
+            <button onClick={handleLogout}>🚪 Logout</button>
+          </div>
+        </>
+      )}
     </nav>
   );
 }

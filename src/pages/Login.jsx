@@ -35,9 +35,14 @@ export default function Login() {
   return (
     <div className="auth-container">
       <form className="auth-card" onSubmit={handleSubmit}>
-        <h2>Welcome Back👋</h2>
-        <p className="auth-subtitle">Login to continue shopping</p>
+        
+        {/* 🔒 FIXED HEADER BLOCK */}
+        <div className="auth-header">
+          <h2>Welcome👋</h2>
+          <p className="auth-subtitle">Login to continue shopping</p>
+        </div>
 
+        {/* INPUTS (NOW STABLE) */}
         <input
           type="email"
           placeholder="Email"

@@ -26,15 +26,20 @@ export default function Signup() {
     }
 
     dispatch(signup({ email, password }));
-    navigate("/login"); // ✅ redirect to login
+    navigate("/login");
   };
 
   return (
     <div className="auth-container">
       <form className="auth-card" onSubmit={handleSubmit}>
-        <h2>Create Account</h2>
-        <p className="auth-subtitle">Sign up to start shopping</p>
+        
+        {/* 🔒 FIXED HEADER BLOCK */}
+        <div className="auth-header">
+          <h2>Create Account</h2>
+          <p className="auth-subtitle">Sign up to start shopping</p>
+        </div>
 
+        {/* INPUTS – NOW STABLE */}
         <input
           type="email"
           placeholder="Email"

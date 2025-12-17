@@ -1,10 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// ✅ Load wishlist from localStorage
+const initialState = {
+  items: JSON.parse(localStorage.getItem("wishlist")) || []
+};
+
 const wishlistSlice = createSlice({
   name: "wishlist",
-  initialState: {
-    items: []
-  },
+  initialState,
   reducers: {
     toggleWishlist(state, action) {
       const exists = state.items.find(
@@ -18,6 +21,9 @@ const wishlistSlice = createSlice({
       } else {
         state.items.push(action.payload);
       }
+
+      // ✅ ALWAYS persist to localStorage
+      localStorage.setItem("wishlist", JSON.stringify(state.items));
     }
   }
 });

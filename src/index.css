@@ -483,7 +483,7 @@ button:hover {
 }
 
 .auth-card input {
-  width: 85%;
+  width: 100%;
   padding: 18px 12px;   /* 👈 reduced height */
   font-size: 14.5px;    /* 👈 sharper text */
   font-weight: 600;
@@ -497,18 +497,23 @@ button:hover {
 }
 .auth-card {
   max-width: 420px;
-  padding: 20px;
+  width: 100%;
+  padding: 26px 22px;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;   /* 🔥 KEY FIX */
+  gap: 12px;
 
-  gap: 10px; /* 👈 KEY spacing fix */
+  border-radius: 14px;
 }
+
 
 
 .auth-card input::placeholder {
   color: rgba(255, 255, 255, 0.75);
+  width: 100%;            /* 🔒 no auto resize */
+  max-width: 100%;
 }
 
 
@@ -520,11 +525,10 @@ button:hover {
 
 .auth-card button {
   margin-top: 11px;
-  width: 140px; /* 👈 stops weird stretching */
-
+  width: 120px; /* 👈 stops weird stretching */
   padding: 14px 0;
- border-radius: 10px; 
-
+  border-radius: 10px; 
+  align-self: center;
   background: linear-gradient(135deg, #ffd100, #ffbf00);
   color: #0a2a66;
 
@@ -546,6 +550,25 @@ button:hover {
   transform: translateY(0);
 }
 
+.auth-header {
+  height: 110px;                 /* 🔒 KEY FIX */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.auth-header h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.auth-header p {
+  font-size: 14px;
+  margin-top: 6px;
+  margin-right: 10px;
+}
 
 /* FOOTER LINK */
 .auth-card h2 {
@@ -1320,3 +1343,91 @@ body.dark .filters span {
   }
 }
 
+/* ===== RESPONSIVE VISIBILITY ===== */
+.desktop-only {
+  display: flex;
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* MOBILE VIEW */
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+}
+
+/* Hamburger */
+.hamburger-btn {
+  background: none;
+  border: none;
+  font-size: 26px;
+  color: #ffd100;
+  cursor: pointer;
+  top: -44px;
+  left: 410px;
+  position: relative;
+}
+
+/* Overlay */
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 998;
+}
+
+/* Small floating menu card */
+.menu-card {
+  position: absolute;
+  top: 56px;
+  right: 14px;
+
+  width: 220px;
+  padding: 16px;
+
+  background: linear-gradient(135deg, #868181, #f0eeec);
+  border-radius: 14px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+  z-index: 999;
+
+  animation: slideDown 0.25s ease;
+}
+
+.menu-card a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.menu-card button {
+  background: #82817f;
+  border: none;
+  border-radius: 8px;
+  padding: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
